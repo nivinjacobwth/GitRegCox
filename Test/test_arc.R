@@ -1,9 +1,9 @@
-install_github("nivinjacobwth/RegCox")
+install_github("nivinjacobwth/GitRegCox/RegCox")
 library(RegCox)
 
 # Set the path to the file below
 filename = "synthetic1-survival.csv"
-filename = read.csv("breast.csv")
+#filename = "breast.csv"
 
 train_time <- train_data$time
 train_event <-train_data$event
