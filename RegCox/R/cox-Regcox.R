@@ -24,7 +24,7 @@ regcox <- function(x, y, t, regtype, nfolds, lambda1=0, lambda2=0, alpha=0.5, la
   if(regtype == "Kernelnet")
     return(coxKernelnet(x, y, t, nfolds, alpha))
   if(regtype == "Oscar")
-    return(regcoxfista(y[,2], x, as.vector(y[,1]), t, y, lambda1, lambda2))
+    return(regcoxfista(y[,2], x, as.vector(y[,1]), t, y, lambda1, lambda2, nfolds))
   if(regtype == "Fear")
     return(fear.cmd(x, y, t, nfolds, tol, lambda, itermax))
   if(regtype == "Cocktail")

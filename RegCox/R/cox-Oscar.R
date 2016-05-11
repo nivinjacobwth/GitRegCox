@@ -12,7 +12,6 @@ regcoxfista=function(delta, z, time, t, y_target, l1, l2, nfolds){
         g <- dloglik(nrow(z),delta,z,y,time)
         v=y-(g/L)
         prox_flat <-  oscarapo(v,lambda1/L,lambda2/L) # oscar approximate proximal operator
-		prox_flat <- (prox_flat-min(prox_flat))/(max(prox_flat)-min(prox_flat))
         betanew <- prox_flat
         tnew<- (1 + sqrt(1 + 4*t1^2))/2
         y = as.vector(betanew + ((t1-1)/(tnew))*(betanew-beta))
