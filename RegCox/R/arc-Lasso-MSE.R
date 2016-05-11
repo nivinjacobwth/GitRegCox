@@ -1,9 +1,7 @@
 #' @export
 
-arc.lasso.mse <- function(filename, nfolds, lambda)
+arc.lasso.mse <- function(train_data1, nfolds, lambda)
 {
-  
-  train_data1 <- read.csv(filename, head=TRUE, sep=",")
   
   folds <- coxsplit(train_data1, nfolds)
   mse <- numeric(nfolds)

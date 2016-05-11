@@ -1,9 +1,7 @@
 #' @export
 
-arc.enet.auc <- function(filename, nfolds, alpha, lambda)
+arc.enet.auc <- function(train_data1, nfolds, alpha, lambda)
 {
-  
-  train_data1 <- read.csv(filename, head=TRUE, sep=",")
   
   folds <- coxsplit(train_data1, nfolds)
   auc <- numeric(nfolds)

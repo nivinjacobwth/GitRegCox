@@ -1,9 +1,7 @@
 #' @export
 
-arc.lapnet.mse <- function(filename, nfolds, alpha, lambda)
+arc.lapnet.mse <- function(train_data1, nfolds, alpha, lambda)
 {
-  
-  train_data1 <- read.csv(filename, head=TRUE, sep=",")
   
   folds <- coxsplit(train_data1, nfolds)
   mse <- numeric(nfolds)

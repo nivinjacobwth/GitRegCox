@@ -1,6 +1,6 @@
 #' @export
 
-regcoxfista=function(delta, z, time, t, y_target, l1, l2, nfolds){
+regcoxfista=function(delta, z, time, t, y_target, l1, l2, nfolds, stdbeta){
         beta=numeric(ncol(z))
         t1=1
         niter=6 # number of iterations
@@ -19,6 +19,9 @@ regcoxfista=function(delta, z, time, t, y_target, l1, l2, nfolds){
         t1 = tnew;
         }
   
+	if(stdbeta)
+		beta <- (beta-min(beta))/(max(beta)-min(beta))
+		
 	foldid <- coxsplit(y_target, nfolds)
   
 	dt <- data.frame(cbind(y_target, z))

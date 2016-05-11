@@ -1,6 +1,6 @@
 #' @export
 
-coxLapnet <- function(x, y, t, nfolds, alpha)
+coxLapnet <- function(x, y, t, nfolds, stdbeta, alpha)
 {
   
 Laplacian <- getLaplacian(x)
@@ -8,7 +8,7 @@ Laplacian <- getLaplacian(x)
 foldid<-coxsplit(y, nfolds)
 
 # Cox laplacian Net
-fit<-Coxnet(x, y, Omega = Laplacian, penalty="Net", alpha=alpha, foldid=foldid)
+fit<-Coxnet(x, y, Omega = Laplacian, penalty="Net", alpha=alpha, foldid=foldid, isd=stdbeta)
 beta<-fit$Beta0
 
 dt <- data.frame(cbind(y, x))

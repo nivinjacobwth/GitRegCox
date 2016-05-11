@@ -1,6 +1,12 @@
 #' @export
 
-cocktail.cmd <- function(x, y, t, nfolds, tol, lambda, itermax, alpha, weightj){
+cocktail.cmd <- function(x, y, t, nfolds, stdbeta, tol, lambda, itermax, alpha, weightj){
+
+if(!stdbeta)
+{
+	print("ERROR: stdbeta must be TRUE for Cocktail regularization")
+	return()
+}
 
 beta.old <- rep(0, ncol(x))
 

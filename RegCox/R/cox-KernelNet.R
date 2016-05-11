@@ -1,6 +1,6 @@
 #' @export
 
-coxKernelnet <- function(x, y, t, nfolds, alpha)
+coxKernelnet <- function(x, y, t, nfolds, stdbeta, alpha)
 {
 
 # Correlation matrix
@@ -9,7 +9,7 @@ rbf <- as.matrix(getLaplacian(x, "RBF"))
 # cross validation
 foldid<-coxsplit(y, nfolds)
 
-fit <- Coxnet(x, y, Omega = rbf, penalty="Net", alpha=alpha, foldid=foldid)
+fit <- Coxnet(x, y, Omega = rbf, penalty="Net", alpha=alpha, foldid=foldid, isd=stdbeta)
 beta <- fit$Beta
 
 dt <- data.frame(cbind(y, x))

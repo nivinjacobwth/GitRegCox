@@ -1,9 +1,7 @@
 #' @export
 
-arc.lasso.auc <- function(filename, nfolds, lambda)
+arc.lasso.auc <- function(train_data1, nfolds, lambda)
 {
-  
-  train_data1 <- read.csv(filename, head=TRUE, sep=",")
   
   folds <- coxsplit(train_data1, nfolds)
   auc <- numeric(nfolds)

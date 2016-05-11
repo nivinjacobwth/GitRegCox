@@ -1,6 +1,12 @@
 #' @export
 
-fear.cmd <- function(x, y, t, nfolds, tol, lambda, itermax){
+fear.cmd <- function(x, y, t, nfolds, stdbeta, tol, lambda, itermax){
+
+if(!stdbeta)
+{
+	print("ERROR: stdbeta must be TRUE for Fear regularization")
+	return()
+}
 
 beta.old <- rep(0, ncol(x))
 

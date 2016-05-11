@@ -1,11 +1,11 @@
 #' @export
 
-coxLasso <- function(x, y, t, nfolds)
+coxLasso <- function(x, y, t, nfolds, stdbeta)
 {
   
   foldid <- coxsplit(y, nfolds)
   
-  fit <- Coxnet(x, y ,penalty="Lasso", foldid=foldid)
+  fit <- Coxnet(x, y ,penalty="Lasso", foldid=foldid, isd=stdbeta)
   beta <- fit$Beta
   
   dt <- data.frame(cbind(y, x))

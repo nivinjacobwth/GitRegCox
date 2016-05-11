@@ -1,11 +1,11 @@
 #' @export
 
-coxEnet <- function(x, y, t, nfolds, alpha)
+coxEnet <- function(x, y, t, nfolds, stdbeta, alpha)
 {
   
   foldid <- coxsplit(y, nfolds)
   
-  fit <- Coxnet(x, y, penalty="Enet", alpha=alpha, foldid=foldid)
+  fit <- Coxnet(x, y, penalty="Enet", alpha=alpha, foldid=foldid, isd=stdbeta)
   beta <- fit$Beta
   
   dt <- data.frame(cbind(y, x))
