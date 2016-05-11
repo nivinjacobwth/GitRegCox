@@ -18,7 +18,7 @@
 regcox <- function(x, y, t, regtype, nfolds, standardize=TRUE, stdbeta=TRUE, lambda1=0, lambda2=0, alpha=0.5, lambda=0, tol=1e-3, itermax, weight=1)
 {
   if(standardize)
-	x <- normalize(x, byrow=F)
+	x <- apply(x, 2, scale)
 
   if(regtype == "Lasso")
     return(coxLasso(x, y, t, nfolds, stdbeta))

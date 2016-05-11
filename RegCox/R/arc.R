@@ -16,7 +16,7 @@ data <- read.csv(filename, head=TRUE, sep=",")
 if(standardize){
 x <- as.matrix(data[,3:ncol(data)])
 y <- as.matrix(data[,1:2])
-xnorm <- normalize(x, byrow=F)
+xnorm <- apply(x, 2, scale)
 data <- data.frame(cbind(y, xnorm))
 }
 
