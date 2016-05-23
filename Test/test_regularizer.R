@@ -1,4 +1,4 @@
-install_github("nivinjacobwth/GitRegCox/RegCox")
+install_github("nivinjacobwth/RegCox/RegCox")
 library(RegCox)
 
 # Set the path to the file below
